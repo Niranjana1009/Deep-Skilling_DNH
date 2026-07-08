@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+WRAPPER_DIR="$SCRIPT_DIR/.mvn/wrapper"
+MAVEN_HOME="$WRAPPER_DIR/apache-maven-3.9.9"
+
+if [ ! -x "$MAVEN_HOME/bin/mvn" ]; then
+  if [ ! -f "$WRAPPER_DIR/apache-maven-3.9.9-bin.zip" ]; then
+    curl -fsSL https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/apache-maven-3.9.9-bin.zip -o "$WRAPPER_DIR/apache-maven-3.9.9-bin.zip"
+  fi
+  unzip -q "$WRAPPER_DIR/apache-maven-3.9.9-bin.zip" -d "$WRAPPER_DIR"
+fi
+
+exec "$MAVEN_HOME/bin/mvn" "$@"
