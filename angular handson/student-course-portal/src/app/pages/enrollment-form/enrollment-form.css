@@ -1,0 +1,8 @@
+.enrollment-form { padding: 2rem; display: grid; gap: 1rem; }
+.field { display: grid; gap: 0.35rem; max-width: 420px; }
+input, select, button { padding: 0.5rem; }
+.invalid { border: 2px solid red; }
+.valid { border: 2px solid green; }
+.error { color: red; font-size: 0.9rem; }
+.success { color: green; font-weight: bold; }
+.actions { display: flex; gap: 1rem; }

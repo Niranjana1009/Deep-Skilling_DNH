@@ -1,0 +1,46 @@
+<section class="enrollment-form" appHighlight="lightblue">
+  <h2>Enrollment Form</h2>
+  <form #enrollmentForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Student Name</label>
+      <input name="studentName" [(ngModel)]="studentName" required minlength="3" [ngClass]="{ invalid: studentName && enrollmentForm.controls['studentName']?.invalid && enrollmentForm.controls['studentName']?.touched, valid: studentName && enrollmentForm.controls['studentName']?.valid && enrollmentForm.controls['studentName']?.touched }" />
+      <div class="error" *ngIf="enrollmentForm.controls['studentName']?.touched && enrollmentForm.controls['studentName']?.invalid">Name is required and must be at least 3 characters.</div>
+    </div>
+
+    <div class="field">
+      <label>Student Email</label>
+      <input name="studentEmail" [(ngModel)]="studentEmail" required email [ngClass]="{ invalid: studentEmail && enrollmentForm.controls['studentEmail']?.invalid && enrollmentForm.controls['studentEmail']?.touched, valid: studentEmail && enrollmentForm.controls['studentEmail']?.valid && enrollmentForm.controls['studentEmail']?.touched }" />
+      <div class="error" *ngIf="enrollmentForm.controls['studentEmail']?.touched && enrollmentForm.controls['studentEmail']?.invalid">Valid email is required.</div>
+    </div>
+
+    <div class="field">
+      <label>Course</label>
+      <select name="courseId" [(ngModel)]="courseId" required [ngClass]="{ invalid: courseId && enrollmentForm.controls['courseId']?.invalid && enrollmentForm.controls['courseId']?.touched, valid: courseId && enrollmentForm.controls['courseId']?.valid && enrollmentForm.controls['courseId']?.touched }">
+        <option value="">Select a course</option>
+        <option value="101">101 - Angular</option>
+        <option value="102">102 - TypeScript</option>
+      </select>
+      <div class="error" *ngIf="enrollmentForm.controls['courseId']?.touched && enrollmentForm.controls['courseId']?.invalid">Course selection is required.</div>
+    </div>
+
+    <div class="field">
+      <label>Preferred Semester</label>
+      <div>
+        <label><input type="radio" name="preferredSemester" value="Odd" [(ngModel)]="preferredSemester" /> Odd</label>
+        <label><input type="radio" name="preferredSemester" value="Even" [(ngModel)]="preferredSemester" /> Even</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label><input type="checkbox" name="agreeToTerms" [(ngModel)]="agreeToTerms" required /> I agree to the terms</label>
+      <div class="error" *ngIf="enrollmentForm.controls['agreeToTerms']?.touched && enrollmentForm.controls['agreeToTerms']?.invalid">You must agree to the terms.</div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="enrollmentForm.invalid">Submit</button>
+      <button type="button" (click)="resetForm()">Reset</button>
+    </div>
+
+    <div class="success" *ngIf="submitted">Enrollment request submitted successfully!</div>
+  </form>
+</section>

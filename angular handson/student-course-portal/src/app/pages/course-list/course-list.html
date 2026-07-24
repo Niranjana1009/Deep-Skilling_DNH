@@ -1,0 +1,13 @@
+<section class="course-list">
+  <h2>Available Courses</h2>
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="!isLoading && courses.length === 0">No courses available.</div>
+  <div *ngIf="!isLoading && courses.length > 0" class="course-grid">
+    <app-course-card
+      *ngFor="let course of courses; trackBy: trackByCourseId"
+      [course]="course"
+      (enroll)="onEnroll($event)">
+    </app-course-card>
+  </div>
+  <div *ngIf="selectedCourseId !== null">Selected course: {{ selectedCourseId }}</div>
+</section>

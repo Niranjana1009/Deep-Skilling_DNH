@@ -1,0 +1,2 @@
+.course-list { padding: 2rem; display: grid; gap: 1rem; }
+.course-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }

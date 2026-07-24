@@ -1,0 +1,15 @@
+<section class="home-page">
+  <h1>Welcome to {{ portalName }}</h1>
+  <p>Manage your courses and student journey with confidence.</p>
+  <div class="stats">
+    <div><strong>Courses Available:</strong> 12</div>
+    <div><strong>Enrolled:</strong> 3</div>
+    <div><strong>GPA:</strong> 3.8</div>
+  </div>
+  <button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
+  <p>Searching for: {{ searchTerm }}</p>
+  <input [(ngModel)]="searchTerm" placeholder="Search courses" />
+  <p>{{ message }}</p>
+  <!-- [property] binds a value; [(ngModel)] provides two-way form binding. -->
+  <p class="note">[property] binds a value; [(ngModel)] provides two-way form binding.</p>
+</section>

@@ -1,0 +1,46 @@
+<section class="reactive-form">
+  <h2>Reactive Enrollment Form</h2>
+  <form [formGroup]="enrollmentForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Student Name</label>
+      <input formControlName="studentName" />
+      <div class="error" *ngIf="enrollmentForm.get('studentName')?.touched && enrollmentForm.get('studentName')?.invalid">Name is required and must be at least 3 characters.</div>
+    </div>
+
+    <div class="field">
+      <label>Student Email</label>
+      <input formControlName="studentEmail" />
+      <div class="error" *ngIf="enrollmentForm.get('studentEmail')?.touched && enrollmentForm.get('studentEmail')?.hasError('emailTaken')">Email is already taken.</div>
+      <div class="error" *ngIf="enrollmentForm.get('studentEmail')?.touched && enrollmentForm.get('studentEmail')?.invalid">Valid email is required.</div>
+    </div>
+
+    <div class="field">
+      <label>Course</label>
+      <input formControlName="courseId" />
+      <div class="error" *ngIf="enrollmentForm.get('courseId')?.touched && enrollmentForm.get('courseId')?.hasError('invalidCourseCode')">Course code cannot start with XX.</div>
+      <div class="error" *ngIf="enrollmentForm.get('courseId')?.touched && enrollmentForm.get('courseId')?.invalid">Course is required.</div>
+    </div>
+
+    <div class="field">
+      <label>Preferred Semester</label>
+      <select formControlName="preferredSemester">
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label><input type="checkbox" formControlName="agreeToTerms" /> I agree to the terms</label>
+    </div>
+
+    <div formArrayName="additionalCourses">
+      <div *ngFor="let course of additionalCourses.controls; let i = index">
+        <input [formControlName]="i" />
+        <button type="button" (click)="removeCourse(i)">Remove</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="addAnotherCourse()">Add Another Course</button>
+    <button type="submit" [disabled]="enrollmentForm.invalid">Submit</button>
+  </form>
+</section>

@@ -1,0 +1,8 @@
+.course-card { border: 1px solid #d1d5db; border-left: 4px solid #6b7280; padding: 1rem; border-radius: 0.5rem; display: grid; gap: 0.5rem; }
+.course-card.card--enrolled { background: #fef3c7; }
+.course-card.card--full { border-color: #2563eb; }
+.course-card.card--expanded { box-shadow: 0 0 0 2px #93c5fd; }
+.badge { padding: 0.25rem 0.5rem; border-radius: 999px; color: white; font-size: 0.8rem; }
+.badge.passed { background: green; }
+.badge.failed { background: red; }
+.badge.pending { background: gray; }

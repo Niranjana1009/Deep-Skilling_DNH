@@ -1,0 +1,15 @@
+<article class="course-card" [ngClass]="cardClasses" [ngStyle]="{ 'border-left': getBorderStyle() }">
+  <h3>{{ course.name }}</h3>
+  <p>Code: {{ course.code }}</p>
+  <p>Credits: {{ course.credits | creditLabel }}</p>
+  <p class="status">
+    <span [ngSwitch]="course.gradeStatus">
+      <span *ngSwitchCase="'passed'" class="badge passed">Passed</span>
+      <span *ngSwitchCase="'failed'" class="badge failed">Failed</span>
+      <span *ngSwitchDefault class="badge pending">Pending</span>
+    </span>
+  </p>
+  <button (click)="toggleDetails()">Show Details</button>
+  <button (click)="onEnrollClick()">Enroll</button>
+  <div *ngIf="expanded" class="details">This course offers {{ course.credits }} credits and is taught in a practical format.</div>
+</article>

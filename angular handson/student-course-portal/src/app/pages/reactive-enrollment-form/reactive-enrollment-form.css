@@ -1,0 +1,4 @@
+.reactive-form { padding: 2rem; display: grid; gap: 1rem; }
+.field { display: grid; gap: 0.35rem; max-width: 420px; }
+input, select, button { padding: 0.5rem; }
+.error { color: red; font-size: 0.9rem; }
